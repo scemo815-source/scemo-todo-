@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할일 관리 앱</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📝 할일 관리</h1>
+        
+        <div class="input-section">
+            <input type="text" id="todoInput" placeholder="할일을 입력하세요... (Enter로 빠른 추가)" />
+            <div class="date-input-group">
+                <div class="date-field">
+                    <label>시작일</label>
+                    <input type="date" id="startDate" />
+                </div>
+                <div class="date-field">
+                    <label>종료일</label>
+                    <input type="date" id="endDate" />
+                </div>
+            </div>
+            <div class="quick-date-btns">
+                <button class="quick-date-btn" data-days="0">오늘</button>
+                <button class="quick-date-btn" data-days="1">내일</button>
+                <button class="quick-date-btn" data-days="7">1주일</button>
+                <button class="quick-date-btn" data-days="30">1개월</button>
+            </div>
+            <button id="addBtn" class="btn-add">+ 할일 추가</button>
+        </div>
+
+        <div class="controls-section">
+            <div class="filter-section">
+                <button class="filter-btn active" data-filter="all">
+                    전체 <span class="filter-count" id="filterAllCount">0</span>
+                </button>
+                <button class="filter-btn" data-filter="pending">
+                    대기 <span class="filter-count" id="filterPendingCount">0</span>
+                </button>
+                <button class="filter-btn" data-filter="inProgress">
+                    진행중 <span class="filter-count" id="filterInProgressCount">0</span>
+                </button>
+                <button class="filter-btn" data-filter="completed">
+                    완료 <span class="filter-count" id="filterCompletedCount">0</span>
+                </button>
+            </div>
+            
+            <div class="sort-section">
+                <label>정렬:</label>
+                <select id="sortSelect" class="sort-select">
+                    <option value="dueDate">마감일순</option>
+                    <option value="created">최신순</option>
+                    <option value="status">상태순</option>
+                </select>
+            </div>
+        </div>
+
+        <ul id="todoList" class="todo-list"></ul>
+    </div>
+
+    <!-- 토스트 알림 -->
+    <div id="toast" class="toast"></div>
+
+    <!-- 커스텀 모달 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">알림</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="modalConfirm" class="modal-btn modal-btn-confirm">확인</button>
+                <button id="modalCancel" class="modal-btn modal-btn-cancel">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
